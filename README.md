@@ -4,8 +4,6 @@ A Django database backend for Oracle with DRCP.
 
 Developed against Oracle 11.2 with cx_Oracle 5.1.2 in Django 1.6 with Python 3.3
 
-Please e-mail thoughts, comments, and suggestions to me, s@johnpapps.com
-
 Configuration
 -------------
 Ensure you have a tnsnames.ora entry augmented with SERVER=POOLED.
