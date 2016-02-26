@@ -3,11 +3,12 @@ django-oracle-drcp
 A Django database backend for Oracle with DRCP.
 
 Developed against Oracle 11.2 with cx_Oracle 5.1.2 in Django 1.6 with Python 3.3
+Tested again with cx_Oracle 5.2.1 with Oracle 11.2.0.4 in Django 1.9 with Python 3.4.2
 
 Configuration
 -------------
 Ensure you have a tnsnames.ora entry augmented with SERVER=POOLED.
-Modify your database entry to reference the django-oracle-drcp backend.
+Modify your database entry to reference the `django_oracle_drcp` backend.
 Set 'NAME' to the name of the appropriate tns entry.
 
 Configure DRCP options.
@@ -60,7 +61,7 @@ import cx_Oracle
 
 databases = {
     'default': {
-        'ENGINE': 'django-oracle-drcp',
+        'ENGINE': 'django_oracle_drcp',
         'NAME': 'my_drcp_db',
         'USER': 'my_db_user',
         'PASSWORD': 'my_password',
