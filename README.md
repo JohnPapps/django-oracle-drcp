@@ -8,7 +8,7 @@ Tested again with cx_Oracle 5.2.1 with Oracle 11.2.0.4 in Django 1.9 with Python
 Configuration
 -------------
 Ensure you have a tnsnames.ora entry augmented with SERVER=POOLED.
-Modify your database entry to reference the `django_oracle_drcp` backend.
+Modify your database entry to reference the `django-oracle-drcp` backend.
 Set 'NAME' to the name of the appropriate tns entry.
 
 Configure DRCP options.
@@ -61,7 +61,7 @@ import cx_Oracle
 
 databases = {
     'default': {
-        'ENGINE': 'django_oracle_drcp',
+        'ENGINE': 'django-oracle-drcp',
         'NAME': 'my_drcp_db',
         'USER': 'my_db_user',
         'PASSWORD': 'my_password',
