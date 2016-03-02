@@ -8,7 +8,7 @@ Tested again with cx_Oracle 5.2.1 with Oracle 11.2.0.4 in Django 1.9 with Python
 Configuration
 -------------
 Ensure you have a tnsnames.ora entry augmented with SERVER=POOLED.
-Modify your database entry to reference the `django-oracle-drcp` backend.
+Modify your database entry to reference the 'django-oracle-drcp' backend.
 Set 'NAME' to the name of the appropriate tns entry.
 
 Configure DRCP options.
@@ -31,8 +31,9 @@ behaviour defined by Oracle.
 You will see entries for each class in queries for stats such as
 "select * from v$cpool_cc_stats"
 
-Next, add a 'POOL' entry to your database dict, and set it to a dict as
+You may optionally add a 'POOL' entry to your database dict, and set it to a dict as
 follows:
+
 ```
 'POOL': {
     'min': 1,
