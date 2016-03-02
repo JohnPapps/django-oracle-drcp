@@ -9,7 +9,7 @@ configuration, e.g. how many servers are in useand how many processes are
 permitted per server. However, this provides maximum performance while memory
 lasts.
 
-## How does DRCP work
+## How does DRCP work?
 
 Oracle Database Resident Connection Pooling (DRCP) allows all of these
 processes to share a limited number of pre-allocated connections allocated by
@@ -19,7 +19,12 @@ will have to wait. However, if a process started by a WSGI application server
 is idle, it may not need a connection. There is still a performance advantage
 in having that process already started and ready to receive requests.
 
-## How fast is DRCP vs Persistent Connections
+For more information, take a look at these links:
+
+ * [Blog post on cx_Oracle and DRCP](https://blogs.oracle.com/opal/entry/python_cx_oracle_and_oracle)
+ * [Whitepaper on DRCP](http://www.oracle.com/technetwork/topics/php/php-scalability-ha-twp-128842.pdf)
+
+## How fast is DRCP vs Persistent Connections?
 
 The test environment producing the results below is as Follows:
 
@@ -28,7 +33,7 @@ The test environment producing the results below is as Follows:
  * cx_Oracle 5.2.1
  * Oracle 11.2.0.4
 
-The system is a VM on a VmWare vSphere cluster - but the important thing is comparisons.
+The system is a VM on a VmWare vSphere cluster - but the important thing is how much overhead DRCP adds.
 
 The benchmark accessed a single URL on the server that:
 
