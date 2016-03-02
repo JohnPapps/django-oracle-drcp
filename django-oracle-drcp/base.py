@@ -10,18 +10,16 @@ class DatabaseWrapper(DjDatabaseWrapper):
 
     def __init__(self, *args, **kwargs):
         super(DatabaseWrapper, self).__init__(*args, **kwargs)
-        if 'POOL' not in self.settings_dict: 
-            poolconfig = { 'min': 1, 'max': 2, 'increment': 1 }
-        else:
-            poolconfig = self.settings_dict['POOL']
-            if ('min' not in poolconfig or
-                'max' not in poolconfig or
-                'increment' not in poolconfig):
-                raise ImproperlyConfigured('POOL database option requires \'min\', \'max\', and \'increment\'') 
-            poolconfig['min'] = int(poolconfig['min'])
-            poolconfig['max'] = int(poolconfig['max'])
-            poolconfig['increment'] = int(poolconfig['increment'])
-
+        default_pool = {
+            'min': 1,
+            'max': 2,
+            'increment': 1,
+        }
+        poolconfig = self.settings_dict.get('POOL', default_pool)
+        if set(pool_config.keys()) != {'min', 'max', 'increment'}:
+            raise ImproperlyConfigured('POOL database option requires \'min\', \'max\', and \'increment\'')
+        if not all(isinstance(val, int) for val in pool_config.values()):
+            raise ImproperlyConfigured('POOL database option values must be numeric')
         self.pool = cx_Oracle.SessionPool(
             user=self.settings_dict['USER'],
             password=self.settings_dict['PASSWORD'],
